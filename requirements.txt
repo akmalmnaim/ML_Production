@@ -6,3 +6,4 @@ Pillow
 opencv-python==4.5.4.60
 Flask-WTF
 tensorflow
+h5py
