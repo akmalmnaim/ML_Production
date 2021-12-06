@@ -45,7 +45,7 @@ def predict():
     return predict_result(chosen_model, runtimes, respon_model, 'temp.jpg')
 
 def predict_result(model, run_time, probs, img):
-    class_list = {'Cat': 0, 'Dog': 1}
+    class_list = {'NORMAL': 0, 'PNEUMONIA': 1}
     idx_pred = probs.index(max(probs))
     labels = list(class_list.keys())
     return render_template('/result_select.html', labels=labels, 
