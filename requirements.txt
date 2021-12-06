@@ -2,8 +2,7 @@ Flask
 h5py==2.10.0
 gunicorn
 numpy==1.18
-Keras
 Pillow
-opencv-python
+opencv-python==4.5.4.60
 Flask-WTF
 tensorflow
