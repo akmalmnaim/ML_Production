@@ -38,18 +38,19 @@ def predict():
     img = np.expand_dims(cv2.resize(img, model.layers[0].input_shape[0][1:3] if not model.layers[0].input_shape[1:3] else model.layers[0].input_shape[1:3]).astype('float32') / 255, axis=0)
     start = time.time()
     pred = model.predict(img)[0]
-    labels = (pred > 0.5).astype(np.int)
-    print(labels)
+    calculation = (pred > 0.5).astype(np.int)
+    print(calculation)
     runtimes = round(time.time()-start,4)
     respon_model = [round(elem * 100, 2) for elem in pred]
-    return predict_result(chosen_model, runtimes, respon_model, 'temp.jpg')
+    return predict_result(chosen_model, runtimes, respon_model, calculation , 'temp.jpg')
 
-def predict_result(model, run_time, probs, img):
+def predict_result(model, run_time, probs, result, img):
     class_list = {'NORMAL': 0, 'PNEUMONIA': 1}
     idx_pred = probs.index(max(probs))
+    result1 = int(result)
     labels = list(class_list.keys())
     return render_template('/result_select.html', labels=labels, 
-                            probs=probs, model=model, pred=idx_pred, 
+                            probs=probs, model=model, pred=idx_pred, result2 = result1, 
                             run_time=run_time, img=img)
 
 if __name__ == "__main__": 
